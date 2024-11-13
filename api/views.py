@@ -5,6 +5,7 @@ from rest_framework.exceptions import NotFound
 from django.db import IntegrityError
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
+from rest_framework import status
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -36,7 +37,7 @@ class OrderViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         user = User.objects.filter(id=request.data.get('user')).first()
         if not user:
-            raise NotFound("User not found")
+            return Response({'detail':'User not found'}, status=status.HTTP_404_NOT_FOUND)
         try:
             return super().create(request, *args, **kwargs)
         except IntegrityError as e:
