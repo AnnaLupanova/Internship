@@ -14,6 +14,12 @@ Run the application:
 ```
 docker-compose up -d
 ```
+Run commands below for migrate data:
+```
+docker exec -it web /bin/bash
+python manage.py makemigrations
+python manage.py migrate
+```
 
 API documentation:
 - 127.0.0.1:8000/docs

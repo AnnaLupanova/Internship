@@ -3,6 +3,7 @@ version: '3'
 services:
   db:
     image: postgres:13
+    container_name: db
     environment:
       POSTGRES_DB: myapp_db
       POSTGRES_USER: ${POSTGRES_USER}
@@ -16,6 +17,7 @@ services:
 
   web:
     build: .
+    container_name: web
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/app
