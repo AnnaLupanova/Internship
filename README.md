@@ -2,6 +2,7 @@
 Clone repo:
 ```
 git clone <path_repo>
+cd Internship
 ```
 
 Edit file .env : specify the access details for the database in the file.
